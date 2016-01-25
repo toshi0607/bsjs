@@ -105,6 +105,6 @@ AppView.prototype.onInvalid = function() {
   });
 };
 
-$("input").each(fucntion() {
+$("input").each(function() {
   new AppView(this);
 });
