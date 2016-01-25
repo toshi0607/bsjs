@@ -58,6 +58,7 @@ function AppView(el) {
 
 AppView.prototype.initialize = function(el) {
   this.$el = $(el);
+  this.$list = this.$el.next().children();
 
   var obj = this.$el.data();
 
@@ -81,10 +82,29 @@ AppView.prototype.handleEvents = function() {
 
   this.model.on("invalid", function() {
     self.onInvalid();
-  })
+  });
 };
 
 AppView.prototype.onKeyup = function(e) {
   var $target = $(e.currentTarget);
-  this.model.set($target.val())
+  this.model.set($target.val());
 };
+
+AppView.prototype.onValid = function() {
+  this.$el.removeClass("error");
+  this.$list.hide();
+};
+
+AppView.prototype.onInvalid = function() {
+  var self = this;
+  this.$el.addClass("error");
+  this.$list.hide();
+
+  $.each(this.model.errors, function(index, val) {
+    self.$list.filter("[data-error=\"" + val + "\"]").show();
+  });
+};
+
+$("input").each(fucntion() {
+  new AppView(this);
+});
