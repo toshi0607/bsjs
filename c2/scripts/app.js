@@ -68,7 +68,7 @@ Modal.prototype.slide = function(index) {
 };
 
 Modal.prototype.countChange = function(num, index, len) {
-  return(index + num + len) % len;
+  return (index + num + len) % len;
 };
 
 Modal.prototype.next = function() {
