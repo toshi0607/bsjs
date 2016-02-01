@@ -73,7 +73,8 @@ Modal.prototype.countChange = function(num, index, len) {
 
 Modal.prototype.createCounter = function(index, len) {
   return function(num) {
-    return index = (index + num + len) % len;
+    index = (index + num + len) % len;
+    return index;
   };
 };
 
