@@ -6,13 +6,8 @@ Modal.prototype.initialize = function(el) {
   this.$el = el;
   this.$container = $('#modal');
   this.$contents = $('#modal-contents');
-  this.$close = $('#modal-close');
-  this.$next = $('#modal-next');
-  this.$prev = $('#modal-prev');
   this.$overlay = $('#modal-overlay');
-
   this.$parents = this.$el.parents("ul");
-
   this.$window = $(window);
   this.handleEvents();
 };
@@ -24,17 +19,17 @@ Modal.prototype.handleEvents = function() {
     return false;
   });
 
-  this.$close.on("click", function(e) {
+  this.$container.on("click", "modal-next", function(e) {
     self.hide(e);
     return false;
   });
 
-  this.$overlay.on("click", function(e) {
+  this.$container.on("click", "modal-prev", function(e) {
     self.hide(e);
     return false;
   });
 
-  this.$next.on("click", function(e) {
+  this.$container.on("click", "modal-close",function(e) {
     self.next(e);
     return false;
   });
