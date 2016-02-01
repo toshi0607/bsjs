@@ -10,13 +10,16 @@ Modal.prototype.initialize = function(el) {
   this.$next = $('#modal-next');
   this.$prev = $('#modal-prev');
   this.$overlay = $('#modal-overlay');
+
+  this.$parents = this.$el.parents("ul");
+
   this.$window = $(window);
   this.handleEvents();
 };
 
 Modal.prototype.handleEvents = function() {
   var self = this;
-  this.$el.on("click", function(e) {
+  this.$parents.on("click", "a", function(e) {
     self.show(e);
     return false;
   });
