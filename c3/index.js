@@ -13,18 +13,26 @@ window.requestAnimationFrame =
 var x = 5;
 var y = 5;
 
-draw();
+render();
 
-function draw() {
+function render() {
   ctx.clearRect(0, 0, 500, 500);
 
-  x += 5;
-  y += 5;
+  updatePosition();
+  draw(x, y);
+
+  requestAnimationFrame(render);
+}
+
+function updatePosition() {
+    x += 5;
+    y += 5;
+  }
+
+function draw(posx, posy) {
   ctx.beginPath();
   ctx.fillStyle = "#99ff66";
-  ctx.rect(x, y, 100, 200);
+  ctx.rect(posx, posy, 100, 200);
   ctx.fill();
   ctx.closePath();
-
-  requestAnimationFrame(draw);
 }
