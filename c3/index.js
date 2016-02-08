@@ -2,6 +2,14 @@ var canvas = document.getElementById( "canvas" );
 var ctx = canvas.getContext( "2d" );
 
 var interval = Math.floor(1000/60);
+
+window.requestAnimationFrame =
+  window.requestAnimationFrame ||
+  window.mozRequestAnimationFrame ||
+  window.webkitRequestAnimationFrame ||
+  window.msRequestAnimationFrame ||
+  function(cb) {setTimeout(cb, 17);};
+
 var x = 5;
 var y = 5;
 
@@ -18,5 +26,5 @@ function draw() {
   ctx.fill();
   ctx.closePath();
 
-  setTimeout(draw, interval);
+  requestAnimationFrame(draw);
 }
