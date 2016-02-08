@@ -1,8 +1,22 @@
 var canvas = document.getElementById( "canvas" );
 var ctx = canvas.getContext( "2d" );
 
-ctx.beginPath();
-ctx.fillStyle = "red";
-ctx.arc( 100, 100, 40, 0, Math.PI * 2 );
-ctx.fill();
-ctx.closePath();
+var interval = Math.floor(1000/60);
+var x = 5;
+var y = 5;
+
+draw();
+
+function draw() {
+  ctx.clearRect(0, 0, 500, 500);
+
+  x += 5;
+  y += 5;
+  ctx.beginPath();
+  ctx.fillStyle = "#99ff66";
+  ctx.rect(x, y, 100, 200);
+  ctx.fill();
+  ctx.closePath();
+
+  setTimeout(draw, interval);
+}
