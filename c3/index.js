@@ -24,13 +24,14 @@ function Particle(ctx, x, y) {
   this.x = x || 0;
   this.y = y || 0;
   this.v = {
-    x: Math.random() * 10,
-    y: Math.random() * 10
-  }
+    x: Math.random() * 10-5,
+    y: Math.random() * 10-5
+  };
 }
 
 Particle.prototype.render = function(){
   this.updatePosition();
+  this.wrapPosition();
   this.draw();
 };
 
@@ -48,6 +49,13 @@ Particle.prototype.updatePosition = function() {
   // 3. 位置をずらす
   this.x += this.v.x;
   this.y += this.v.y;
+};
+
+Particle.prototype.wrapPosition = function() {
+  if(this.x < 0 ) this.x = 500;
+  if(this.x > 500 ) this.x = 0;
+  if(this.y < 0 ) this.y = 500;
+  if(this.y > 500 ) this.y = 0;
 };
 
 // 1.図形を描画
