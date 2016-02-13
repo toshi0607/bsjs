@@ -23,6 +23,10 @@ function Particle(ctx, x, y) {
   this.ctx = ctx;
   this.x = x || 0;
   this.y = y || 0;
+  this.v = {
+    x: Math.random() * 10,
+    y: Math.random() * 10
+  }
 }
 
 Particle.prototype.render = function(){
@@ -42,8 +46,8 @@ Particle.prototype.draw = function(){
 
 Particle.prototype.updatePosition = function() {
   // 3. 位置をずらす
-  this.x += 5;
-  this.y += 5;
+  this.x += this.v.x;
+  this.y += this.v.y;
 };
 
 // 1.図形を描画
