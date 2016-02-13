@@ -7,7 +7,7 @@ window.requestAnimationFrame =
 
 var canvas = document.getElementById( "canvas" ),
   ctx = canvas.getContext( "2d" ),
-  NUM = 20,
+  NUM = 100,
   LIFEMAX = 100,
   particles = [],
   W = 500,
@@ -63,6 +63,7 @@ Particle.prototype.updateParams= function() {
   var ratio = this.life / this.startLife;
   this.color.a= 1-ratio;
   this.redius = 30 / ratio;
+  if(this.radius > 300) this.radius = 300;
   this.life -= 1;
   if( this.life === 0 ) this.initialize();
 };
