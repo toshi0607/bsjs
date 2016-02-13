@@ -24,7 +24,7 @@ function Particle(ctx, x, y) {
 Particle.prototype.initialize = function(x, y){
   this.x = x || 0;
   this.y = y || 0;
-  this.radius = 30;
+  this.radius = 250;
   // 速度用のオブジェクトv
   this.v = {
     x: Math.random()*10-5, // x方向の速度
@@ -91,6 +91,8 @@ render();
 function render() {
   // 2.一度消去
   ctx.clearRect(0,0,W,H); // 前回までの描画内容を消去
+
+  ctx.globalCompositeOperation = "lighter";
 
   particles.forEach(function(e){ e.render(); });
 
