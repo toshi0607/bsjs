@@ -9,6 +9,8 @@ var canvas = document.getElementById( "canvas" );
 var ctx = canvas.getContext( "2d" );
 var NUM = 20;
 var particles = [];
+W = 500;
+H = 500;
 
 canvas.width = canvas.height = 500;
 
@@ -52,10 +54,10 @@ Particle.prototype.updatePosition = function() {
 };
 
 Particle.prototype.wrapPosition = function() {
-  if(this.x < 0 ) this.x = 500;
-  if(this.x > 500 ) this.x = 0;
-  if(this.y < 0 ) this.y = 500;
-  if(this.y > 500 ) this.y = 0;
+  if(this.x < 0 ) this.x = W;
+  if(this.x > W ) this.x = 0;
+  if(this.y < 0 ) this.y = H;
+  if(this.y > H ) this.y = 0;
 };
 
 // 1.図形を描画
