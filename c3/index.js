@@ -62,6 +62,7 @@ Particle.prototype.draw = function(){
 Particle.prototype.updateParams= function() {
   var ratio = this.life / this.startLife;
   this.color.a= 1-ratio;
+  this.redius = 30 / ratio;
   this.life -= 1;
   if( this.life === 0 ) this.initialize();
 };
