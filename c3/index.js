@@ -42,7 +42,7 @@ Particle.prototype.draw = function(){
   ctx = this.ctx;
   ctx.beginPath();
   ctx.fillStyle = "#99ff66";
-  ctx.rect( this.x, this.y, 4, 4 ); // 位置指定
+  ctx.arc( this.x, this.y, 10, Math.PI*2, false ); // 位置指定
   ctx.fill();
   ctx.closePath();
 };
