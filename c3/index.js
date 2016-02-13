@@ -15,8 +15,8 @@ H = 500;
 canvas.width = canvas.height = 500;
 
 for(var i = 0; i < NUM; i++) {
-  positionX =  Math.random()*120; // X座標を0-20の間でランダムに
-  positionY =  Math.random()*20; // Y座標を0-20の間でランダムに
+  positionX =  Math.random()*W; // X座標を0-20の間でランダムに
+  positionY =  Math.random()*H; // Y座標を0-20の間でランダムに
   particle = new Particle(ctx, positionX, positionY);
   particles.push( particle );
 }
@@ -41,7 +41,7 @@ Particle.prototype.draw = function(){
   // 4. 描画
   ctx = this.ctx;
   ctx.beginPath();
-  ctx.fillStyle = "#99ff66";
+  ctx.fillStyle = this.gradient;
   ctx.arc( this.x, this.y, 10, Math.PI*2, false ); // 位置指定
   ctx.fill();
   ctx.closePath();
@@ -58,6 +58,15 @@ Particle.prototype.wrapPosition = function() {
   if(this.x > W ) this.x = 0;
   if(this.y < 0 ) this.y = H;
   if(this.y > H ) this.y = 0;
+};
+
+Particle.prototype.gradient = function() {
+  var col = "0, 0, 0";
+  var g = this.ctx.createRadialGradient( this.x, this.y, 0, this.x, this.y, 10);
+  g.addColorStop(0,   "rgba(" + col + ", 1)");
+  g.addColorStop(0.5, "rgba(" + col + ", 0.2)");
+  g.addColorStop(1,   "rgba(" + col + ", 0)");
+  return g;
 };
 
 // 1.図形を描画
